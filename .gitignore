@@ -5,3 +5,5 @@ main.py
 poetry.lock
 pyproject.toml
 replit.nix
+build
+python_upsrtc.engg-info/
