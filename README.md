@@ -48,7 +48,7 @@ See [Ticket](docs.md#ticket) for its related methods and attributes.
 - [ ] Include Fare distribution in Ticket object.
 
 ## Documentation
-Checkout the documentation [here](docs.md)
+Checkout the documentation [here](https://github.com/mohdsabahat/python-upsrtc/blob/main/docs.md)
 
 ## Authors
 - Mohd Sabahat : <mohd.sabahat123@gmail.com>
