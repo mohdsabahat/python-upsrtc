@@ -3,16 +3,16 @@ Unofficial python wrapper around UPSRTC internal API for planning bus journey.
 
 ## Prerequisites
 - python > 3.9
-- requests
+- requests >=2.3.0
 
 ## Usage
 ### Install library
 - Install using pip.
-```pip install python-upsrtc```
+```pip install python_upsrtc```
 ### Generate UPSRTC object
 To generate a UPSRTC object, you can use the following code:
 ```python
-from python-upsrtc import UPSRTC as UP
+from python_upsrtc import UPSRTC as UP
 u = UP()
 ```
 

@@ -1,5 +1,6 @@
 .git
 .pythonlibs
+.pypirc
 dist/*
 main.py
 poetry.lock
