@@ -19,9 +19,9 @@ u = UP()
 ### Get Bus Stops Data
 To get bus Stops data, use the following code:
 ```python
-u.get_bus_stop()
-# raises NOJourneyFoundError if no bus are found
-# raises InvalidSearchSettingsError if search settings are not filled correctly or are empty.
+u.get_bus_stops()
+# Raises apiError if api request fails.
+# raises noBusStopFoundError if no bus stop can be loaded.
 print(u.bus_stops)
 # List(BusStop)
 ```
@@ -36,6 +36,8 @@ u.set_start_station("7381") # get station code from bus stops data
 u.set_end_station("8778")
 u.set_start_date( datetime.now() ) # Set the start date (requires a datetime object as date )
 u.find_buses()
+# raises NOJourneyFoundError if no bus are found
+# raises InvalidSearchSettingsError if search settings are not filled correctly or are empty.
 print( u.journey )
 # List( Ticket )
 ```

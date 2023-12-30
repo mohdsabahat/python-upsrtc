@@ -3,7 +3,7 @@ from .models.busStop import BusStop
 from .models.ticket import Ticket
 from datetime import datetime
 from .errors import InvalidSearchSettingsError
-from .errors import NoJourneyFoundError
+from .errors import NoJourneyFoundError, apiError, noBusStopFoundError
 
 class UPSRTC:
 
@@ -14,10 +14,17 @@ class UPSRTC:
         self.session = ScraperSession()
 
     def get_bus_stops(self):
-        response = self.session.get(self.BUS_STOPS_URL, verify = False) # Verify is set to false to avoid ssl certficate error.
-        self.bus_stops = []
-        for stop in response.json().get('busStops', []):
-            self.bus_stops.append(BusStop(stop) )
+        try:
+            response = self.session.get(self.BUS_STOPS_URL, verify = False) # Verify is set to false to avoid ssl certficate error.
+            self.bus_stops = []
+            if(response.status_code != 200):
+                raise apiError(f'Invalid Response code from api : {response.status_code}')
+            if(len(response.json().get('busStops', [])) == 0 ):
+                raise noBusStopFoundError('No bus stops found')
+            for stop in response.json().get('busStops', []):
+                self.bus_stops.append(BusStop(stop) )
+        except Exception as e:
+            raise apiError(e)
 
     def get_journey_bus(self, payload):
         p = self.session.post(self.SEATS_URL, json = payload, verify = False)
